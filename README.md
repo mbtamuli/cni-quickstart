@@ -84,6 +84,27 @@ default via 10.244.0.1 dev eth0
 10.244.0.1 dev eth0 scope link  src 10.244.0.148
 ```
 
+## Steps
+
+1. Get a running Kubernetes cluster.
+  ```
+  kind create cluster --name cni-test --kubeconfig ~/.kube/cni-test.yml
+  ```
+2. Build the binary
+  ```
+  # I have a M2 MacBook so the Kind Cluster node I have also has arm64 architecture
+  env GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -o cni-quickstart main.go
+  ```
+3. Copy the binary and the network config to enable the plugin
+  ```
+  docker cp cni-quickstart cni-test-control-plane:/opt/cni/bin/
+  docker cp 10-kindnet.conflist cni-test-control-plane:/etc/cni/net.d/
+  ```
+4. Run a pod and see the magic! :sunglasses:
+  ```
+  kubectl run test --image alpine -- sleep infinity
+  ```
+
 ## Gotchas
 
 Can't run go build if you try to import "github.com/containernetworking/plugins/pkg/ns" on macOS as the "github.com/containernetworking/plugins/pkg/ns" contains files named `ns_linux.go` and `ns_windows.go` triggering implicit build constraint! - https://pkg.go.dev/cmd/go#hdr-Build_constraints

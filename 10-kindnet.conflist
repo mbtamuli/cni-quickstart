@@ -25,15 +25,7 @@
 
 	},
 	{
-		"type": "debug",
-		"cniOutput": "/tmp/cni_output_before.txt"
-	},
-	{
 		"type": "cni-quickstart"
-	},
-	{
-		"type": "debug",
-		"cniOutput": "/tmp/cni_output_after.txt"
 	}
 	]
 }
