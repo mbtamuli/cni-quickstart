@@ -1,6 +1,8 @@
 # CNI Quickstart
 
-This CNI plugin does nothing but attempt to modify the pod's network related details!
+:warning: This is a extremely experimental :construction: WIP repository. Read any further at your own risk! :warning:
+
+This CNI plugin does nothing but attempt to modify the pod's network related details! :laughing:
 
 Actually, this plugin doesn't modify any of the pod networking at all, just the information shown in the pod description.
 
@@ -20,7 +22,7 @@ IPs:
   IP:  1.2.3.0
 ```
 
-But if you exec into the pod and try to reach the internet it still does!
+But if you exec into the pod and try to reach the internet it still does! :astonished: _<insert-astonished-Pickachu-GIF>_
 
 ```
 + kubectl exec -it test -- sh
@@ -57,7 +59,7 @@ OK: 16 MiB in 26 packages
 100 11604  100 11604    0     0  24207      0 --:--:-- --:--:-- --:--:-- 24175
 ```
 
-If you dig deeper, you find the reality.
+If you dig deeper, you find the reality. :smiling_imp:
 ```
 / # ip a s
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
