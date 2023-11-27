@@ -2,7 +2,6 @@
 FROM --platform=$BUILDPLATFORM golang:1.21-alpine3.18 AS build
 
 ARG PACKAGE="mriyam.dev/cni-quickstart"
-#ENV PACKAGE=$PACKAGE
 WORKDIR "/go/src/${PACKAGE}"
 
 RUN --mount=target=. \
@@ -17,8 +16,6 @@ RUN --mount=target=. \
     GOOS=$TARGETOS \
     GOARCH=$TARGETARCH \
     go build -o cni-quickstart
-#--mount=type=ssh \
-
 
 FROM --platform=$BUILDPLATFORM gcr.io/distroless/static-debian12
 USER nonroot:nonroot
