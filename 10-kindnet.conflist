@@ -1,0 +1,39 @@
+
+{
+	"cniVersion": "0.3.1",
+	"name": "kindnet",
+	"plugins": [
+	{
+		"type": "ptp",
+		"ipMasq": false,
+		"ipam": {
+			"type": "host-local",
+			"dataDir": "/run/cni-ipam-state",
+			"routes": [
+
+
+				{ "dst": "0.0.0.0/0" }
+			],
+			"ranges": [
+
+
+				[ { "subnet": "10.244.0.0/24" } ]
+			]
+		}
+		,
+		"mtu": 65535
+
+	},
+	{
+		"type": "debug",
+		"cniOutput": "/tmp/cni_output_before.txt"
+	},
+	{
+		"type": "cni-quickstart"
+	},
+	{
+		"type": "debug",
+		"cniOutput": "/tmp/cni_output_after.txt"
+	}
+	]
+}
